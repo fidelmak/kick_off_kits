@@ -19,17 +19,8 @@ class Products extends StatelessWidget {
       color: Colors.white, //.withOpacity(0.09),
       child: Column(
         children: [
-          SizedBox(
-            height: 20,
-          ),
-          features,
-          SizedBox(
-            height: 30,
-          ),
           Center(child: card1),
-          SizedBox(
-            height: 20,
-          ),
+          features,
         ],
       ),
     );

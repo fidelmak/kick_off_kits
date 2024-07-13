@@ -2,9 +2,9 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 
 const baseUrl = "https://api.timbu.cloud/products";
-const apiKey = "6cb3b3211bfb4aa2a03ce757a2f8ad1820240704190944481226";
-const orgId = "4a8b1c9a46d4454b969b5a894d259e69";
-const appId = "KWFOVINJ6PHXJ10";
+const apiKey = "096e309415294b7fb8881a1674fc3e3720240713045911535430";
+const orgId = "277d7e20b120419f816e2a13aaff78f2";
+const appId = "B9XYV6V7LHD46BW";
 
 class Service {
   Future<List<dynamic>> fetchProducts() async {

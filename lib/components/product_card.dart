@@ -27,31 +27,21 @@ class ProductCard extends StatelessWidget {
         borderRadius: BorderRadius.circular(5.0),
         color: Colors.white,
       ),
-      height: screenHeight / 2,
+      height: screenHeight,
       width: screenWidth / 1.5,
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Container(
-            child: product_image,
-          ),
-          SizedBox(
-            height: 10,
-          ),
-          product_text,
-          SizedBox(
-            height: 10,
-          ),
-          Center(child: product_price),
-          SizedBox(
-            height: 10,
-          ),
-          Expanded(child: Center(child: product_desc)),
-          SizedBox(
-            height: 20,
-          ),
-          click,
-        ],
+      child: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Container(
+              child: product_image,
+            ),
+            product_text,
+            product_price,
+            product_desc,
+            click,
+          ],
+        ),
       ),
     );
   }

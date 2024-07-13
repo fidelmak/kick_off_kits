@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 import '../components/bottom_nav.dart';
 import '../components/category.dart';
+import '../components/kits_product.dart';
 import '../components/nav_bar.dart';
 import '../components/product_card.dart';
 import '../components/products.dart';
@@ -34,19 +36,25 @@ class HomeScreen extends StatelessWidget {
             } else if (!snapshot.hasData || snapshot.data!.isEmpty) {
               return Center(child: Text('No products available.'));
             } else {
-              return ListView.builder(
+              return GridView.builder(
+                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: 2,
+                  crossAxisSpacing: 8.0,
+                  mainAxisSpacing: 8.0,
+                  childAspectRatio: 0.7, // Adjust as needed
+                ),
                 itemCount: snapshot.data!.length,
                 itemBuilder: (context, index) {
                   var product = snapshot.data![index];
 
                   final priceList = product['current_price'];
                   String price = 'Price not available';
-                  //final productId = product["id"];
 
                   if (priceList != null && priceList.isNotEmpty) {
                     final ngnPrices = priceList[0]['NGN'];
                     if (ngnPrices != null && ngnPrices.isNotEmpty) {
-                      price = 'NGN ${ngnPrices[0].toString()}';
+                      final formatter = NumberFormat('#,##0');
+                      price = '₦ ${formatter.format(ngnPrices[0])}';
                     }
                   }
 
@@ -56,72 +64,25 @@ class HomeScreen extends StatelessWidget {
                     imageUrl = productModel.img + product['photos'][0]['url'];
                   }
 
-                  return SingleChildScrollView(
-                    child: Products(
-                      features: CategoryFeatures(
-                        categoryText1: Text(
-                          "Hot Sales ✨🔥✨  ",
-                          style: TextStyle(fontSize: 20, color: textBlack),
-                        ),
-                        categoryText2: Text(
-                          "${productModel.getCurrentDate()}",
-                          style: TextStyle(
-                              fontSize: 12,
-                              color: textBlue,
-                              fontWeight: FontWeight.bold),
-                        ),
-                        categoryFunction1: () {},
-                        categoryFunction2: () {},
+                  return Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: KitsProduct(
+                      product_image: imageUrl.isNotEmpty
+                          ? NetworkImage(imageUrl) as ImageProvider<Object>
+                          : AssetImage('assets/no.jpg')
+                              as ImageProvider<Object>,
+                      price_rating: Text(
+                        price,
+                        style: TextStyle(
+                            fontSize: 16,
+                            fontWeight: FontWeight.normal,
+                            color: Colors.green),
                       ),
-                      card1: ProductCard(
-                        product_image: imageUrl.isNotEmpty
-                            ? Image.network(
-                                imageUrl,
-                                height: screenHeight / 4,
-                                width: screenWidth / 1.2,
-                                fit: BoxFit.contain,
-                              )
-                            : Container(
-                                height: screenHeight / 4,
-                                color: Colors.grey,
-                                child: const Center(
-                                  child: Text('No Image Available'),
-                                ),
-                              ),
-                        product_text: Text(
-                          product['name'] ?? 'No Name',
-                          style: TextStyle(
-                              fontSize: 26, fontWeight: FontWeight.bold),
-                        ),
-                        product_price: Text(
-                          price,
-                          style: TextStyle(
-                              fontSize: 18, fontWeight: FontWeight.normal),
-                        ),
-                        product_desc:
-                            Text(product['description'] ?? 'No Description'),
-                        click: SizedBox(
-                          width: 100.0,
-                          height: 50.0,
-                          child: TextButton(
-                            onPressed: () {
-                              productModel.addToCart(product, context);
-                              productModel.increment();
-                            },
-                            style: TextButton.styleFrom(
-                              foregroundColor: Colors.white,
-                              backgroundColor: Colors.black,
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(20.0),
-                              ),
-                            ).copyWith(
-                              overlayColor: MaterialStateProperty.all<Color>(
-                                  Colors.black),
-                            ),
-                            child: Text("Add "),
-                          ),
-                        ),
-                      ),
+                      myText2: Text("Men Jersey"),
+                      action: () {
+                        productModel.addToCart(product, context);
+                        productModel.increment();
+                      },
                     ),
                   );
                 },
