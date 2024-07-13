@@ -4,6 +4,7 @@ import 'package:provider/provider.dart';
 
 import '../controller/controller.dart';
 import 'home.dart';
+import 'kit_home.dart';
 
 class PaymentPage extends StatelessWidget {
   @override
@@ -57,7 +58,7 @@ class PaymentPage extends StatelessWidget {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => HomeScreen(),
+                            builder: (context) => KitHome(),
                           ),
                         );
                       });

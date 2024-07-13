@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:kick_off_kits/screens/kit_home.dart';
 import 'package:provider/provider.dart';
 
 import 'controller/controller.dart';
@@ -18,7 +19,7 @@ class MyApp extends StatelessWidget {
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
         title: 'GadgetVerse', // title of the app
-        home: SafeArea(child: HomeScreen()),
+        home: SafeArea(child: KitHome()),
       ),
     );
   }

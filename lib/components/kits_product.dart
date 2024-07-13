@@ -4,15 +4,18 @@ class KitsProduct extends StatelessWidget {
   final ImageProvider product_image;
 
   final Widget price_rating;
-  final Function action;
+  final Widget action;
 
   final Widget myText2;
-  const KitsProduct(
-      {super.key,
-      required this.product_image,
-      required this.action,
-      required this.price_rating,
-      required this.myText2});
+  final Widget myText1;
+  const KitsProduct({
+    super.key,
+    required this.product_image,
+    required this.action,
+    required this.price_rating,
+    required this.myText2,
+    required this.myText1,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -58,28 +61,24 @@ class KitsProduct extends StatelessWidget {
                         ),
                         SizedBox(width: 20), // Space between the buttons
                         // Cart Icon Button
-                        MouseRegion(
-                          onEnter: (event) => {},
-                          onExit: (event) => {},
-                          child: Container(
-                            width: 30,
-                            height: 30,
-                            decoration: BoxDecoration(
-                              shape: BoxShape.rectangle,
+                        Container(
+                          width: 30,
+                          height: 30,
+                          decoration: BoxDecoration(
+                            shape: BoxShape.rectangle,
 
-                              color: Colors.white, // Background color
+                            color: Colors.white, // Background color
+                          ),
+                          child: IconButton(
+                            icon: Icon(
+                              Icons.shopping_cart_outlined,
+                              color: Colors.black,
+                              size: 16,
                             ),
-                            child: IconButton(
-                              icon: Icon(
-                                Icons.shopping_cart_outlined,
-                                color: Colors.black,
-                                size: 16,
-                              ),
-                              onPressed: action(),
-                              color:
-                                  Colors.green, // Background color when pressed
-                              hoverColor: Colors.green,
-                            ),
+                            onPressed: null,
+                            color:
+                                Colors.green, // Background color when pressed
+                            hoverColor: Colors.green,
                           ),
                         ),
                       ]),
@@ -87,10 +86,10 @@ class KitsProduct extends StatelessWidget {
               ],
             )),
         Container(
-          height: screenHeight / 8,
+          height: screenHeight / 6,
           color: Colors.white,
           child: Padding(
-            padding: const EdgeInsets.all(8.0),
+            padding: const EdgeInsets.all(4.0),
             child: Column(
               children: [
                 Row(
@@ -113,6 +112,13 @@ class KitsProduct extends StatelessWidget {
                 Container(
                   child: Row(children: [
                     Container(
+                      child: myText1,
+                    )
+                  ]),
+                ),
+                Container(
+                  child: Row(children: [
+                    Container(
                       child: myText2,
                     )
                   ]),
@@ -121,6 +127,7 @@ class KitsProduct extends StatelessWidget {
             ),
           ),
         ),
+        action
       ],
     );
   }
