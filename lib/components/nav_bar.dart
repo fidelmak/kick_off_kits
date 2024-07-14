@@ -25,15 +25,38 @@ class _ProfileNavState extends State<ProfileNav> {
         padding: const EdgeInsets.all(0.0),
         child: AppBar(
           automaticallyImplyLeading: false,
-          title: Row(
-            mainAxisAlignment: MainAxisAlignment.end,
-            crossAxisAlignment: CrossAxisAlignment.end,
-            children: [
-              Text(
-                '${productModel.counter}',
-                style: TextStyle(fontSize: 14, color: primaryRed),
-              ),
-            ],
+          backgroundColor: Colors.transparent,
+          title: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Text(
+                  'Kickoff Kits '.toUpperCase(),
+                  style: TextStyle(
+                      fontSize: 36,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.black),
+                ),
+                Row(
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.all(0.0),
+                      child: IconButton(
+                        icon: Icon(Icons.shopping_cart,
+                            size: 24, color: Colors.black),
+                        onPressed: () {},
+                      ),
+                    ),
+                    Text(
+                      '${productModel.counter}',
+                      style: TextStyle(fontSize: 14, color: primaryRed),
+                    ),
+                  ],
+                ),
+              ],
+            ),
           ),
           actions: [],
         ),

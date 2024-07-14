@@ -5,7 +5,12 @@ import '../components/kits_product.dart';
 import '../controller/controller.dart';
 import '../service/service.dart';
 
-class HomeScreen extends StatelessWidget {
+class HomeScreen extends StatefulWidget {
+  @override
+  State<HomeScreen> createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     final mediaQuery = MediaQuery.of(context);
@@ -17,7 +22,7 @@ class HomeScreen extends StatelessWidget {
         future: context.read<ProductModel>().productsService.fetchProducts(),
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
-            return Center(child: CircularProgressIndicator());
+            return Center(child: Text("..."));
           } else if (snapshot.hasError) {
             return Center(child: Text('Error: ${snapshot.error}'));
           } else if (!snapshot.hasData || snapshot.data!.isEmpty) {
@@ -53,44 +58,42 @@ class HomeScreen extends StatelessWidget {
                   imageUrl = productModel.img + product['photos'][0]['url'];
                 }
 
-                return Expanded(
-                  child: Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: KitsProduct(
-                      product_image: imageUrl.isNotEmpty
-                          ? NetworkImage(imageUrl) as ImageProvider<Object>
-                          : AssetImage('assets/images/no.jpg')
-                              as ImageProvider<Object>,
-                      price_rating: Text(
-                        price,
-                        style: TextStyle(
-                            fontSize: 16,
-                            fontWeight: FontWeight.normal,
-                            color: Colors.green),
-                      ),
-                      // myText1: Text(product['description'] ?? 'No Description'),
-                      myText1: Text(product['name'] ?? 'No Name'),
-                      myText2: Text("Men Jersey"),
-                      action: SizedBox(
-                        width: 100.0,
-                        height: 50.0,
-                        child: TextButton(
-                          onPressed: () {
-                            productModel.addToCart(product, context);
-                            productModel.increment();
-                          },
-                          style: TextButton.styleFrom(
-                            foregroundColor: Colors.white,
-                            backgroundColor: Colors.black,
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(20.0),
-                            ),
-                          ).copyWith(
-                            overlayColor:
-                                MaterialStateProperty.all<Color>(Colors.black),
+                return Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: KitsProduct(
+                    product_image: imageUrl.isNotEmpty
+                        ? NetworkImage(imageUrl) as ImageProvider<Object>
+                        : AssetImage('assets/images/no.jpg')
+                            as ImageProvider<Object>,
+                    price_rating: Text(
+                      price,
+                      style: TextStyle(
+                          fontSize: 16,
+                          fontWeight: FontWeight.normal,
+                          color: Colors.green),
+                    ),
+                    // myText1: Text(product['description'] ?? 'No Description'),
+                    myText1: Text(product['name'] ?? 'No Name'),
+                    myText2: Text("Men Jersey"),
+                    action: SizedBox(
+                      width: 100.0,
+                      height: 50.0,
+                      child: TextButton(
+                        onPressed: () {
+                          productModel.addToCart(product);
+                          productModel.increment();
+                        },
+                        style: TextButton.styleFrom(
+                          foregroundColor: Colors.white,
+                          backgroundColor: Colors.black,
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(20.0),
                           ),
-                          child: Text("Add "),
+                        ).copyWith(
+                          overlayColor:
+                              MaterialStateProperty.all<Color>(Colors.black),
                         ),
+                        child: Text("Add "),
                       ),
                     ),
                   ),

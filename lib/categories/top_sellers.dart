@@ -89,7 +89,7 @@ class TopSellersScreen extends StatelessWidget {
                       height: 50.0,
                       child: TextButton(
                         onPressed: () {
-                          productModel.addToCart(product, context);
+                          productModel.addToCart(product);
                           productModel.increment();
                         },
                         style: TextButton.styleFrom(

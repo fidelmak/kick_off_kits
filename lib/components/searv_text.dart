@@ -13,17 +13,21 @@ class SearchText extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final mediaQuery = MediaQuery.of(context);
+    final screenWidth = mediaQuery.size.width;
+    final screenHeight = mediaQuery.size.height;
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 25),
       child: SizedBox(
         height: 50,
+        width: screenWidth,
         child: TextField(
           obscureText: obscure,
           style: TextStyle(
               fontSize: 24, color: Colors.black), // Text color set to black
           decoration: InputDecoration(
             hintText: hint,
-            hintStyle: TextStyle(fontSize: 24, color: Colors.grey),
+            hintStyle: TextStyle(fontSize: 18, color: Colors.grey),
             suffixIcon: IconButton(
               icon: Icon(
                 Icons.search,

@@ -18,7 +18,7 @@ class MyApp extends StatelessWidget {
       create: (context) => ProductModel(),
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
-        title: 'GadgetVerse', // title of the app
+        title: 'KickOff Kits', // title of the app
         home: SafeArea(child: KitHome()),
       ),
     );

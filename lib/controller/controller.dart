@@ -26,20 +26,20 @@ class ProductModel with ChangeNotifier {
     return formatter.format(now);
   }
 
-  addToCart(Map<String, dynamic> product, BuildContext context) {
+  addToCart(
+    Map<String, dynamic> product,
+  ) {
     if (!_addedItems.contains(product)) {
       _cartItems.add(product);
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
-          content: Text('${product['name']} added to cart'),
-          duration: Duration(seconds: 1),
-        ),
+
+      SnackBar(
+        content: Text('${product['name']} added to cart'),
       );
       notifyListeners();
     }
   }
 
-  removeFromCart(Map<String, dynamic> product, BuildContext context) {
+  removeFromCart(Map<String, dynamic> product, context) {
     _cartItems.remove(product);
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
@@ -59,7 +59,7 @@ class ProductModel with ChangeNotifier {
     return total;
   }
 
-  checkout(BuildContext context) {
+  checkout(context) {
     double totalPrice = getTotalPrice();
     Navigator.push(
       context,
@@ -73,7 +73,7 @@ class ProductModel with ChangeNotifier {
   }
 
   //  clear all items in the cart
-  clearAllCart(BuildContext context) {
+  clearAllCart(context) {
     _cartItems.clear();
     ScaffoldMessenger.of(context).showSnackBar(
       const SnackBar(
@@ -84,7 +84,7 @@ class ProductModel with ChangeNotifier {
     notifyListeners();
   }
 
-  handleCheckout(BuildContext context) {
+  handleCheckout(context) {
     showDialog(
       context: context,
       builder: (BuildContext context) {

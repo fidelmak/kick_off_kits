@@ -12,7 +12,9 @@ class Service {
     try {
       var response = await http.get(
         Uri.parse(
-            '$baseUrl?Apikey=$apiKey&organization_id=$orgId&Appid=$appId&size=10'),
+            'https://api.timbu.cloud/products?Apikey=096e309415294b7fb8881a1674fc3e3720240713045911535430&organization_id=277d7e20b120419f816e2a13aaff78f2&Appid=B9XYV6V7LHD46BW'),
+        // Uri.parse(
+        //     '$baseUrl?Apikey=$apiKey&organization_id=$orgId&Appid=$appId&size=10'),
       );
 
       if (response.statusCode == 200) {
