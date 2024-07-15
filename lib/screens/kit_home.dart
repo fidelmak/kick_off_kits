@@ -58,7 +58,28 @@ class _KitHomeState extends State<KitHome> {
                 ],
               ),
             ),
+            TopSellerScreen(),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text("New Sellers"),
+                  TextButton(onPressed: () {}, child: Text("More")),
+                ],
+              ),
+            ),
             NewListScreen(),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text("All Products"),
+                  TextButton(onPressed: () {}, child: Text("More")),
+                ],
+              ),
+            ),
             HomeScreen(),
           ],
         ),

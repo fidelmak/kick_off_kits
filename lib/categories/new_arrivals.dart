@@ -27,7 +27,7 @@ class NewListScreen extends StatelessWidget {
                 .where((product) =>
                     product['categories'] != null &&
                     product['categories']
-                        .any((category) => category['name'] == 'top sellers'))
+                        .any((category) => category['name'] == 'new'))
                 .toList();
 
             if (newArrivalProducts.isEmpty) {
