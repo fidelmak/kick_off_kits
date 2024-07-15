@@ -23,6 +23,17 @@ class NewListScreen extends StatelessWidget {
           } else if (!snapshot.hasData || snapshot.data!.isEmpty) {
             return Center(child: Text('No products available.'));
           } else {
+            List<dynamic> newArrivalProducts = snapshot.data!
+                .where((product) =>
+                    product['categories'] != null &&
+                    product['categories']
+                        .any((category) => category['name'] == 'top sellers'))
+                .toList();
+
+            if (newArrivalProducts.isEmpty) {
+              return Center(child: Text('No new arrival products available.'));
+            }
+
             return CarouselSlider.builder(
               options: CarouselOptions(
                 height: screenHeight / 2,
@@ -33,9 +44,9 @@ class NewListScreen extends StatelessWidget {
                   // Optional: Add logic for when the page changes
                 },
               ),
-              itemCount: snapshot.data!.length,
+              itemCount: newArrivalProducts.length,
               itemBuilder: (context, index, realIndex) {
-                var product = snapshot.data![index];
+                var product = newArrivalProducts[index];
 
                 final priceList = product['current_price'];
                 String price = 'Price not available';

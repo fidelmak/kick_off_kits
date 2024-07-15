@@ -6,7 +6,7 @@ import '../screens/cart.dart';
 import '../screens/checkout.dart';
 import '../controller/controller.dart';
 
-// bottom nav bar 
+// bottom nav bar
 class BottomNav extends StatelessWidget {
   const BottomNav({super.key});
 
@@ -15,7 +15,7 @@ class BottomNav extends StatelessWidget {
     return Consumer<ProductModel>(builder: (context, productModel, child) {
       return Container(
         padding: EdgeInsets.symmetric(vertical: 10),
-        color: Colors.white, // custom color 
+        color: Colors.white, // custom color
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
@@ -28,7 +28,8 @@ class BottomNav extends StatelessWidget {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => HomeScreen(),// navigating to the home screen 
+                          builder: (context) =>
+                              HomeScreen(), // navigating to the home screen
                         ),
                       );
                     },
@@ -36,6 +37,29 @@ class BottomNav extends StatelessWidget {
                   ),
                   Text(
                     'Home',
+                    style: TextStyle(fontSize: 12),
+                  ),
+                ],
+              ),
+            ),
+            Expanded(
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  IconButton(
+                    onPressed: () {
+                      // Navigator.push(
+                      //   context,
+                      //   MaterialPageRoute(
+                      //     builder: (context) =>
+                      //         CartView(cartItems: productModel.cartItems),
+                      //   ),
+                      // );
+                    },
+                    icon: Icon(Icons.heart_broken_outlined),
+                  ),
+                  Text(
+                    'Fav',
                     style: TextStyle(fontSize: 12),
                   ),
                 ],
