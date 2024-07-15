@@ -17,7 +17,7 @@ Welcome to **kick_off_kits** – Your ultimate mobile shopping solution! GadgetV
 - **MVC Architecture**: Seamless integration of the MVC (Model-View-Controller) architecture for clean and maintainable code.
 
 ## Installation
-- **Download the app**: Available on [Google Drive](https://drive.google.com/drive/folders/16BAjMemZLMSYpd4BYOumm1o_4ukn93Mo).
+- **Download the app**: Available on [Google Drive](https://drive.google.com/file/d/1qFPhNQQw9dwf5zI9N_Ank5jJtNI2kFt6/view?usp=drive_link).
 
 ## Usage
 
@@ -57,4 +57,4 @@ Welcome to **kick_off_kits** – Your ultimate mobile shopping solution! GadgetV
 ## View on Appetize
 **Appetize**
 
-*Interact with the website using this link:* [Appetize](https://appetize.io/app/b_xtbv5rnvgukscf2fke2isz5pny)
+*Interact with the website using this link:* [Appetize](https://appetize.io/app/b_qwj7kzb3mvdmbfrhooyb2nj6pe)
