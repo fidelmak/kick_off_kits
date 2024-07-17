@@ -5,6 +5,7 @@ import '../screens/home.dart';
 import '../screens/cart.dart';
 import '../screens/checkout.dart';
 import '../controller/controller.dart';
+import '../screens/kit_home.dart';
 
 // bottom nav bar
 class BottomNav extends StatelessWidget {
@@ -29,7 +30,7 @@ class BottomNav extends StatelessWidget {
                         context,
                         MaterialPageRoute(
                           builder: (context) =>
-                              HomeScreen(), // navigating to the home screen
+                              KitHome(), // navigating to the home screen
                         ),
                       );
                     },

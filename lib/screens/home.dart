@@ -63,7 +63,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   child: GestureDetector(
                     onTap: () {
                       productModel.addToCart(product, context);
-                      //productModel.increment();
+                      productModel.increment();
                     },
                     child: KitsProduct(
                       product_image: imageUrl.isNotEmpty

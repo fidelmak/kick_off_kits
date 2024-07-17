@@ -9,6 +9,8 @@ import '../service/service.dart';
 import '../utils/colors.dart';
 
 class NewArrivalPage extends StatelessWidget {
+  const NewArrivalPage({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -24,6 +26,7 @@ class NewArrivalPage extends StatelessWidget {
         title: Text("New Arrivals"),
       ),
       body: SingleChildScrollView(
+        key: PageStorageKey("any"),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
@@ -40,6 +43,8 @@ class NewArrivalPage extends StatelessWidget {
 }
 
 class NewArrival extends StatelessWidget {
+  const NewArrival({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Consumer<ProductModel>(

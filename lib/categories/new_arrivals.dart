@@ -5,6 +5,8 @@ import 'package:kick_off_kits/controller/controller.dart';
 import 'package:provider/provider.dart';
 
 class NewListScreen extends StatelessWidget {
+  const NewListScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
     final mediaQuery = MediaQuery.of(context);
