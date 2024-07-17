@@ -39,10 +39,8 @@ class NewListScreen extends StatelessWidget {
                 height: screenHeight / 2,
                 autoPlay: true,
                 enlargeCenterPage: true,
-                aspectRatio: 4.0,
-                onPageChanged: (index, reason) {
-                  // Optional: Add logic for when the page changes
-                },
+                aspectRatio: 2.0,
+                onPageChanged: (index, reason) {},
               ),
               itemCount: newArrivalProducts.length,
               itemBuilder: (context, index, realIndex) {

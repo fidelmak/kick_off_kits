@@ -36,10 +36,10 @@ class TopSellerScreen extends StatelessWidget {
 
             return CarouselSlider.builder(
               options: CarouselOptions(
-                height: screenHeight / 2,
+                height: screenHeight / 2.0,
                 autoPlay: true,
                 enlargeCenterPage: true,
-                aspectRatio: 4.0,
+                aspectRatio: 2.0,
                 onPageChanged: (index, reason) {
                   // Optional: Add logic for when the page changes
                 },
