@@ -53,34 +53,55 @@ class _KitHomeState extends State<KitHome> {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Text("Top Sellers"),
+                  Text(
+                    "Top Sellers",
+                    style: TextStyle(fontSize: 18),
+                  ),
                   TextButton(onPressed: () {}, child: Text("More")),
                 ],
               ),
             ),
-            TopSellerScreen(),
+            Padding(
+              padding: const EdgeInsets.all(12.0),
+              child: TopSellerScreen(),
+            ),
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Text("New Sellers"),
-                  TextButton(onPressed: () {}, child: Text("More")),
+                  Text("New Sellers", style: TextStyle(fontSize: 18)),
+                  TextButton(
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => NewArrivalPage(),
+                          ),
+                        );
+                      },
+                      child: Text("More")),
                 ],
               ),
             ),
-            NewListScreen(),
+            Padding(
+              padding: const EdgeInsets.all(12.0),
+              child: NewListScreen(),
+            ),
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Text("All Products"),
+                  Text("More of what you like", style: TextStyle(fontSize: 18)),
                   TextButton(onPressed: () {}, child: Text("More")),
                 ],
               ),
             ),
-            HomeScreen(),
+            Padding(
+              padding: const EdgeInsets.all(12.0),
+              child: HomeScreen(),
+            ),
           ],
         ),
       ),

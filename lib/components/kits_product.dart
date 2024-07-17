@@ -26,7 +26,7 @@ class KitsProduct extends StatelessWidget {
       children: [
         Container(
             width: screenWidth / 1.5,
-            height: screenHeight / 5.5,
+            height: screenHeight / 4.0,
             decoration: BoxDecoration(
               image: DecorationImage(
                 image: product_image,

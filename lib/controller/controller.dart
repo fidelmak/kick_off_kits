@@ -26,14 +26,15 @@ class ProductModel with ChangeNotifier {
     return formatter.format(now);
   }
 
-  addToCart(
-    Map<String, dynamic> product,
-  ) {
+  addToCart(Map<String, dynamic> product, context) {
     if (!_addedItems.contains(product)) {
       _cartItems.add(product);
 
-      SnackBar(
-        content: Text('${product['name']} added to cart'),
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text('${product['name']} added to  cart'),
+          duration: Duration(seconds: 2),
+        ),
       );
       notifyListeners();
     }

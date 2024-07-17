@@ -59,42 +59,51 @@ class _HomeScreenState extends State<HomeScreen> {
                 }
 
                 return Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: KitsProduct(
-                    product_image: imageUrl.isNotEmpty
-                        ? NetworkImage(imageUrl) as ImageProvider<Object>
-                        : AssetImage('assets/images/no.jpg')
-                            as ImageProvider<Object>,
-                    price_rating: Text(
-                      price,
-                      style: TextStyle(
-                          fontSize: 16,
-                          fontWeight: FontWeight.normal,
-                          color: Colors.green),
-                    ),
-                    // myText1: Text(product['description'] ?? 'No Description'),
-                    myText1: Text(product['name'] ?? 'No Name'),
-                    myText2: Text("Men Jersey"),
-                    action: SizedBox(
-                      width: 100.0,
-                      height: 50.0,
-                      child: TextButton(
-                        onPressed: () {
-                          productModel.addToCart(product);
-                          productModel.increment();
-                        },
-                        style: TextButton.styleFrom(
-                          foregroundColor: Colors.white,
-                          backgroundColor: Colors.black,
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(20.0),
-                          ),
-                        ).copyWith(
-                          overlayColor:
-                              MaterialStateProperty.all<Color>(Colors.black),
-                        ),
-                        child: Text("Add "),
+                  padding: const EdgeInsets.all(4.0),
+                  child: GestureDetector(
+                    onTap: () {
+                      productModel.addToCart(product, context);
+                      //productModel.increment();
+                    },
+                    child: KitsProduct(
+                      product_image: imageUrl.isNotEmpty
+                          ? NetworkImage(imageUrl) as ImageProvider<Object>
+                          : AssetImage('assets/images/no.jpg')
+                              as ImageProvider<Object>,
+                      price_rating: Text(
+                        price,
+                        style: TextStyle(
+                            fontSize: 16,
+                            fontWeight: FontWeight.normal,
+                            color: Colors.green),
                       ),
+                      // myText1: Text(product['description'] ?? 'No Description'),
+                      myText1: Text(product['name'] ?? 'No Name'),
+                      myText2: Text("Men Jersey"),
+                      action: SizedBox(
+                        height: 1,
+                      ),
+                      // SizedBox(
+                      //   width: 100.0,
+                      //   height: 50.0,
+                      //   child: TextButton(
+                      //     onPressed: () {
+                      //       productModel.addToCart(product);
+                      //       productModel.increment();
+                      //     },
+                      //     style: TextButton.styleFrom(
+                      //       foregroundColor: Colors.white,
+                      //       backgroundColor: Colors.black,
+                      //       shape: RoundedRectangleBorder(
+                      //         borderRadius: BorderRadius.circular(20.0),
+                      //       ),
+                      //     ).copyWith(
+                      //       overlayColor:
+                      //           MaterialStateProperty.all<Color>(Colors.black),
+                      //     ),
+                      //     child: Text("Add "),
+                      //   ),
+                      // ),
                     ),
                   ),
                 );
