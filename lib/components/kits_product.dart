@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:kick_off_kits/controller/controller.dart';
+import 'package:provider/provider.dart';
 
 class KitsProduct extends StatelessWidget {
   final ImageProvider product_image;
@@ -22,6 +24,7 @@ class KitsProduct extends StatelessWidget {
     final mediaQuery = MediaQuery.of(context);
     final screenWidth = mediaQuery.size.width;
     final screenHeight = mediaQuery.size.height;
+    return Consumer<ProductModel>(builder: (context, productModel, child) {
     return Column(
       children: [
         Container(
@@ -75,7 +78,10 @@ class KitsProduct extends StatelessWidget {
                               color: Colors.black,
                               size: 16,
                             ),
-                            onPressed: null,
+                            onPressed: (){
+                  // productModel.addToCart(product, context);
+                    productModel.increment();
+                            },
                             color:
                                 Colors.green, // Background color when pressed
                             hoverColor: Colors.green,
@@ -130,5 +136,7 @@ class KitsProduct extends StatelessWidget {
         action
       ],
     );
+    
+     });
   }
 }

@@ -6,6 +6,7 @@ import '../screens/cart.dart';
 import '../screens/checkout.dart';
 import '../controller/controller.dart';
 import '../screens/kit_home.dart';
+import '../screens/order_history.dart';
 
 // bottom nav bar
 class BottomNav extends StatelessWidget {
@@ -38,29 +39,6 @@ class BottomNav extends StatelessWidget {
                   ),
                   Text(
                     'Home',
-                    style: TextStyle(fontSize: 12),
-                  ),
-                ],
-              ),
-            ),
-            Expanded(
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  IconButton(
-                    onPressed: () {
-                      // Navigator.push(
-                      //   context,
-                      //   MaterialPageRoute(
-                      //     builder: (context) =>
-                      //         CartView(cartItems: productModel.cartItems),
-                      //   ),
-                      // );
-                    },
-                    icon: Icon(Icons.heart_broken_outlined),
-                  ),
-                  Text(
-                    'Fav',
                     style: TextStyle(fontSize: 12),
                   ),
                 ],
@@ -110,6 +88,29 @@ class BottomNav extends StatelessWidget {
                   ),
                   Text(
                     'Checkout',
+                    style: TextStyle(fontSize: 12),
+                  ),
+                ],
+              ),
+            ),
+
+            Expanded(
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  IconButton(
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => SavedProductsPage(),
+                        ),
+                      );
+                    },
+                    icon: Icon(Icons.history),
+                  ),
+                  Text(
+                    'History',
                     style: TextStyle(fontSize: 12),
                   ),
                 ],

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:intl/intl.dart';
 import '../screens/checkout.dart';
+import '../screens/detail_page.dart';
 import '../screens/home.dart';
 
 import '../screens/payment.dart';
@@ -38,6 +39,31 @@ class ProductModel with ChangeNotifier {
       );
       notifyListeners();
     }
+  }
+
+  // addToHistory(Map<String, dynamic> products, context) {
+  //   if (!_addedItems.contains(product)) {
+  //     _cartItems.add(products);
+
+  //     ScaffoldMessenger.of(context).showSnackBar(
+  //       SnackBar(
+  //         content: Text('${product['name']} added to  cart'),
+  //         duration: Duration(seconds: 2),
+  //       ),
+  //     );
+  //     notifyListeners();
+  //   }
+  // }
+
+  detailPage(context, itemId) {
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => DetailPage(
+          itemId: itemId,
+        ),
+      ),
+    );
   }
 
   removeFromCart(Map<String, dynamic> product, context) {

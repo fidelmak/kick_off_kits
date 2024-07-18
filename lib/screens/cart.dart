@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'package:kick_off_kits/components/order_summary.dart';
 import 'package:provider/provider.dart';
 import '../controller/controller.dart';
 
@@ -151,26 +152,9 @@ class CartView extends StatelessWidget {
                         ),
                 ),
                 const SizedBox(height: 20),
-                Container(
-                  margin: const EdgeInsets.all(20),
-                  width: screenWidth / 1.5,
-                  height: screenHeight / 12,
-                  child: ElevatedButton(
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.black,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(14),
-                      ),
-                    ),
-                    onPressed: () {
-                      productModel.checkout(context);
-                    },
-                    child: const Text(
-                      "CheckOut",
-                      style: TextStyle(color: Colors.white, fontSize: 24),
-                    ),
-                  ),
-                ),
+                OrderSummary(),
+
+               
               ],
             ),
           ),

@@ -29,6 +29,7 @@ class _HomeScreenState extends State<HomeScreen> {
             return Center(child: Text('No products available.'));
           } else {
             return GridView.builder(
+              key: ValueKey("index"),
               physics:
                   NeverScrollableScrollPhysics(), // Prevents GridView from scrolling
               shrinkWrap: true,
@@ -58,14 +59,19 @@ class _HomeScreenState extends State<HomeScreen> {
                   imageUrl = productModel.img + product['photos'][0]['url'];
                 }
 
+                String itemId = product["id"];
+                print(itemId);
+
                 return Padding(
                   padding: const EdgeInsets.all(4.0),
                   child: GestureDetector(
                     onTap: () {
-                      productModel.addToCart(product, context);
-                      productModel.increment();
+                      // productModel.addToCart(product, context);
+                      // productModel.increment();
+                      productModel.detailPage(context, itemId);
                     },
                     child: KitsProduct(
+                      //key:ValueKey("index"),
                       product_image: imageUrl.isNotEmpty
                           ? NetworkImage(imageUrl) as ImageProvider<Object>
                           : AssetImage('assets/images/no.jpg')

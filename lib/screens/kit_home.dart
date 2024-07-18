@@ -28,15 +28,11 @@ class _KitHomeState extends State<KitHome> {
     final screenHeight = mediaQuery.size.height;
 
     return Consumer<ProductModel>(builder: (context, productModel, child) {
-      return SafeArea(
-        child: Scaffold(
-          bottomNavigationBar: const BottomNav(),
-          backgroundColor: textWhite,
-          // appBar: PreferredSize(
-          //   preferredSize: const Size.fromHeight(50.0),
-          //   child: ProfileNav(screenWidth: screenWidth),
-          // ),
-          body: SingleChildScrollView(
+      return Scaffold(
+        bottomNavigationBar: const BottomNav(),
+        backgroundColor: textWhite,
+        body: SafeArea(
+          child: SingleChildScrollView(
             key: PageStorageKey("any"),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,

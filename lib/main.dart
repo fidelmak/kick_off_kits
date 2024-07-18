@@ -19,7 +19,7 @@ class MyApp extends StatelessWidget {
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
         title: 'KickOff Kits', // title of the app
-        home: SafeArea(child: KitHome()),
+        home: KitHome(),
       ),
     );
   }

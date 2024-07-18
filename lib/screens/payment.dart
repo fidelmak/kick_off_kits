@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:kick_off_kits/screens/order_history.dart';
 
 import 'package:provider/provider.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import '../controller/controller.dart';
 import 'home.dart';
@@ -50,7 +52,16 @@ class PaymentPage extends StatelessWidget {
                         borderRadius: BorderRadius.circular(14),
                       ),
                     ),
-                    onPressed: () {
+                    onPressed: () async {
+                      SharedPreferences prefs =
+                          await SharedPreferences.getInstance();
+                      List<String> products =
+                          productModel.cartItems.map((product) {
+                        return product
+                            .toString(); // Convert product to a string representation
+                      }).toList();
+                      await prefs.setStringList('savedProducts', products);
+
                       productModel.clearAllCart(context);
                       productModel.delCounter();
 
@@ -59,6 +70,33 @@ class PaymentPage extends StatelessWidget {
                           context,
                           MaterialPageRoute(
                             builder: (context) => KitHome(),
+                          ),
+                        );
+                      });
+                    },
+                    child: Text(
+                      "Proceed",
+                      style: TextStyle(color: Colors.white, fontSize: 18),
+                    ),
+                  ),
+                ),
+                SizedBox(height: 20),
+                Container(
+                  width: screenWidth / 1.5,
+                  height: screenHeight / 12,
+                  child: ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.black,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(14),
+                      ),
+                    ),
+                    onPressed: () async {
+                      Future.delayed(Duration(seconds: 1), () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => SavedProductsPage(),
                           ),
                         );
                       });
