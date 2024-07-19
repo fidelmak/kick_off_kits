@@ -33,7 +33,7 @@ class _KitHomeState extends State<KitHome> {
         backgroundColor: textWhite,
         body: SafeArea(
           child: SingleChildScrollView(
-            key: PageStorageKey("any"),
+            
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
