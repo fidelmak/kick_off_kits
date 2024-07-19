@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:kick_off_kits/components/kits_product.dart';
 import 'package:kick_off_kits/controller/controller.dart';
+import 'package:kick_off_kits/majorcomponent/top_sellers.dart';
 import 'package:provider/provider.dart';
 
 class TopSellerScreen extends StatelessWidget {
@@ -64,21 +65,31 @@ class TopSellerScreen extends StatelessWidget {
                     padding: const EdgeInsets.all(8.0),
                     child: SizedBox(
                       width: screenWidth / 2,
-                      child: KitsProduct(
-                        product_image: imageUrl.isNotEmpty
-                            ? NetworkImage(imageUrl) as ImageProvider<Object>
-                            : AssetImage('assets/images/no.jpg')
-                                as ImageProvider<Object>,
-                        price_rating: Text(
-                          price,
-                          style: TextStyle(
-                              fontSize: 16,
-                              fontWeight: FontWeight.normal,
-                              color: Colors.green),
+                      child: GestureDetector(
+                      onTap:(){
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => TopSellerPage(),
+                            ),
+                          );
+                      },
+                        child: KitsProduct(
+                          product_image: imageUrl.isNotEmpty
+                              ? NetworkImage(imageUrl) as ImageProvider<Object>
+                              : AssetImage('assets/images/no.jpg')
+                                  as ImageProvider<Object>,
+                          price_rating: Text(
+                            price,
+                            style: TextStyle(
+                                fontSize: 16,
+                                fontWeight: FontWeight.normal,
+                                color: Colors.green),
+                          ),
+                          myText1: Text(product['name'] ?? 'No Name'),
+                          myText2: Text("Men Jersey"),
+                          action: Text(""),
                         ),
-                        myText1: Text(product['name'] ?? 'No Name'),
-                        myText2: Text("Men Jersey"),
-                        action: Text(""),
                       ),
                     ),
                   );

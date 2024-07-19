@@ -29,7 +29,7 @@ class _HomeScreenState extends State<HomeScreen> {
           } else if (snapshot.hasError) {
             return Center(child: Text('Error: ${snapshot.error}'));
           } else if (!snapshot.hasData || snapshot.data!.isEmpty) {
-            return Center(child: Text('No products available.'));
+            return Center(child: Text('No Internet available.'));
           } else {
             return SingleChildScrollView(
               child: Container(
@@ -51,15 +51,15 @@ class _HomeScreenState extends State<HomeScreen> {
                     var product = snapshot.data![index];
 
                     final priceList = product['current_price'];
-                    String price = 'Price not available';
+                  String price = 'Price not available';
 
-                    if (priceList != null && priceList.isNotEmpty) {
-                      final ngnPrices = priceList[0]['NGN'];
-                      if (ngnPrices != null && ngnPrices.isNotEmpty) {
-                        final formatter = NumberFormat('#,##0');
-                        price = '₦ ${formatter.format(ngnPrices[0])}';
-                      }
+                  if (priceList != null && priceList.isNotEmpty) {
+                    final ngnPrices = priceList[0]['NGN'];
+                    if (ngnPrices != null && ngnPrices.isNotEmpty) {
+                      final formatter = NumberFormat('#,##0');
+                      price = '₦ ${formatter.format(ngnPrices[0])}';
                     }
+                  }
 
                     String imageUrl = '';
                     if (product['photos'] != null &&
@@ -68,7 +68,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     }
 
                     String itemId = product["id"];
-                    print(itemId);
+                    
 
                     return Padding(
                       padding: const EdgeInsets.all(4.0),

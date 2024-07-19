@@ -1,7 +1,9 @@
+import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:kick_off_kits/components/order_summary.dart';
 import 'package:provider/provider.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import '../controller/controller.dart';
 
 class CartView extends StatelessWidget {
@@ -17,6 +19,8 @@ class CartView extends StatelessWidget {
     final screenWidth = mediaQuery.size.width;
     final screenHeight = mediaQuery.size.height;
 
+
+
     return Consumer<ProductModel>(
       builder: (context, productModel, child) {
         return Scaffold(
@@ -30,131 +34,130 @@ class CartView extends StatelessWidget {
                 Expanded(
                   child: productModel.cartItems.isNotEmpty
                       ? ListView.builder(
-                          itemCount: productModel.cartItems.length,
-                          itemBuilder: (context, index) {
-                            var product = productModel.cartItems[index];
-                            final priceList = product['current_price'];
-                            String price = 'Price not available';
+                    itemCount: productModel.cartItems.length,
+                    itemBuilder: (context, index) {
+                      var product = productModel.cartItems[index];
+                      final priceList = product['current_price'];
+                      String price = 'Price not available';
 
-                            if (priceList != null && priceList.isNotEmpty) {
-                              final ngnPrices = priceList[0]['NGN'];
-                              if (ngnPrices != null && ngnPrices.isNotEmpty) {
-                                final formatter = NumberFormat('#,##0');
-                                price = '₦ ${formatter.format(ngnPrices[0])}';
-                              }
-                            }
+                      if (priceList != null) {
+                        final ngnPrices = priceList;
+                        if (ngnPrices != null) {
+                          final formatter = NumberFormat('#,##0');
+                          price = '₦ ${formatter.format(ngnPrices)}';
+                        }
+                      }
 
-                            return Container(
-                              height: screenHeight / 4,
-                              margin: const EdgeInsets.symmetric(vertical: 8.0),
-                              child: Container(
-                                child: Row(
+                      return Container(
+                        height: screenHeight / 4,
+                        margin: const EdgeInsets.symmetric(vertical: 8.0),
+                        child: Container(
+                          child: Row(
+                            children: [
+                              Column(
+                                children: [
+                                  Container(
+                                    width: screenWidth / 3,
+                                    height: screenHeight / 5,
+                                    child: AspectRatio(
+                                      aspectRatio: 1,
+                                      child: Image.network(
+                                        img + product['photos'][0]['url'],
+                                        fit: BoxFit.fill,
+                                      ),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                              Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: Column(
+                                  mainAxisAlignment:
+                                  MainAxisAlignment.start,
+                                  crossAxisAlignment:
+                                  CrossAxisAlignment.start,
                                   children: [
-                                    Column(
+                                    Text(
+                                      product['name'] ?? 'No Name',
+                                      style: const TextStyle(
+                                        fontSize: 24,
+                                        fontWeight: FontWeight.bold,
+                                      ),
+                                    ),
+                                    Text(
+                                      price,
+                                      style: const TextStyle(
+                                        fontSize: 18,
+                                        fontWeight: FontWeight.normal,
+                                      ),
+                                    ),
+                                    Row(
+                                      mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
                                       children: [
-                                        Container(
-                                          width: screenWidth / 3,
-                                          height: screenHeight / 5,
-                                          child: AspectRatio(
-                                            aspectRatio: 1,
-                                            child: Image.network(
-                                              img + product['photos'][0]['url'],
-                                              fit: BoxFit.fill,
+                                        Text("M"),
+                                        SizedBox(width: 70),
+                                        Row(
+                                          mainAxisAlignment:
+                                          MainAxisAlignment.end,
+                                          children: [
+                                            IconButton(
+                                              icon: Icon(
+                                                Icons.remove_circle,
+                                                color: Colors.grey
+                                                    .withOpacity(0.5),
+                                              ),
+                                              onPressed: () {},
                                             ),
-                                          ),
+                                            Text("1"),
+                                            IconButton(
+                                              icon: Icon(
+                                                Icons.add_circle,
+                                                color: Colors.grey
+                                                    .withOpacity(0.5),
+                                              ),
+                                              onPressed: () {},
+                                            ),
+                                          ],
                                         ),
                                       ],
                                     ),
-                                    Padding(
-                                      padding: const EdgeInsets.all(8.0),
-                                      child: Column(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.start,
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.start,
-                                        children: [
-                                          Text(
-                                            product['name'] ?? 'No Name',
-                                            style: const TextStyle(
-                                              fontSize: 24,
-                                              fontWeight: FontWeight.bold,
-                                            ),
+                                    Row(
+                                      mainAxisAlignment:
+                                      MainAxisAlignment.end,
+                                      children: [
+                                        Text("Remove"),
+                                        SizedBox(width: 80),
+                                        IconButton(
+                                          icon: Icon(
+                                            Icons.delete,
+                                            color: Colors.red
+                                                .withOpacity(0.5),
                                           ),
-                                          Text(
-                                            price,
-                                            style: const TextStyle(
-                                              fontSize: 18,
-                                              fontWeight: FontWeight.normal,
-                                            ),
-                                          ),
-                                          Row(
-                                            mainAxisAlignment:
-                                                MainAxisAlignment.spaceBetween,
-                                            children: [
-                                              Text("M"),
-                                              SizedBox(width: 70),
-                                              Row(
-                                                mainAxisAlignment:
-                                                    MainAxisAlignment.end,
-                                                children: [
-                                                  IconButton(
-                                                    icon: Icon(
-                                                      Icons.remove_circle,
-                                                      color: Colors.grey
-                                                          .withOpacity(0.5),
-                                                    ),
-                                                    onPressed: () {},
-                                                  ),
-                                                  Text("1"),
-                                                  IconButton(
-                                                    icon: Icon(
-                                                      Icons.add_circle,
-                                                      color: Colors.grey
-                                                          .withOpacity(0.5),
-                                                    ),
-                                                    onPressed: () {},
-                                                  ),
-                                                ],
-                                              ),
-                                            ],
-                                          ),
-                                          Row(
-                                            mainAxisAlignment:
-                                                MainAxisAlignment.end,
-                                            children: [
-                                              Text("Remove"),
-                                              SizedBox(width: 80),
-                                              IconButton(
-                                                icon: Icon(
-                                                  Icons.delete,
-                                                  color: Colors.red
-                                                      .withOpacity(0.5),
-                                                ),
-                                                onPressed: () {
-                                                  productModel.removeFromCart(
-                                                      product, context);
-                                                  productModel.decrement();
-                                                },
-                                              ),
-                                            ],
-                                          ),
-                                        ],
-                                      ),
+                                          onPressed: () {
+                                            productModel.removeFromCart(
+                                                product, context);
+                                            productModel.decrement();
+                                          },
+                                        ),
+                                      ],
                                     ),
                                   ],
                                 ),
                               ),
-                            );
-                          },
-                        )
-                      : const Center(
-                          child: Text("No items in the cart"),
+                            ],
+                          ),
                         ),
+                      );
+                    },
+                  )
+                      : const Center(
+                    child: Text("No items in the cart"),
+                  ),
                 ),
+
                 const SizedBox(height: 20),
                 OrderSummary(),
-
-               
               ],
             ),
           ),

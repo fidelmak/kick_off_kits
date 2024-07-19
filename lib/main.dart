@@ -18,7 +18,7 @@ class MyApp extends StatelessWidget {
       create: (context) => ProductModel(),
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
-        title: 'KickOff Kits', // title of the app
+        title: 'KickOff Kits', 
         home: SplashScreen(),
       ),
     );

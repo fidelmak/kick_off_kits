@@ -29,6 +29,10 @@ class _KitHomeState extends State<KitHome> {
 
     return Consumer<ProductModel>(builder: (context, productModel, child) {
       return Scaffold(
+         appBar: PreferredSize(
+          preferredSize: Size.fromHeight(30.0),
+          child: ProfileNav(screenWidth: screenWidth),
+        ),
         bottomNavigationBar: const BottomNav(),
         backgroundColor: textWhite,
         body: SafeArea(

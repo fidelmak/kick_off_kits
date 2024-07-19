@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import '../screens/home.dart';
+
 import '../screens/cart.dart';
-import '../screens/checkout.dart';
+
 import '../controller/controller.dart';
 import '../screens/kit_home.dart';
 import '../screens/order_history.dart';
@@ -74,20 +74,20 @@ class BottomNav extends StatelessWidget {
                 children: [
                   IconButton(
                     onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => CheckoutPage(
-                            totalPrice: productModel.getTotalPrice(),
-                            productItems: productModel.cartItems,
-                          ),
-                        ),
-                      );
+                      // Navigator.push(
+                      //   context,
+                      //   MaterialPageRoute(
+                      //     builder: (context) => CheckoutPage(
+                      //       totalPrice: productModel.getTotalPrice(),
+                      //       productItems: productModel.cartItems,
+                      //     ),
+                      //   ),
+                      // );
                     },
-                    icon: Icon(Icons.person_4_outlined),
+                    icon: Icon(Icons.favorite_outline),
                   ),
                   Text(
-                    'Checkout',
+                    'WishList',
                     style: TextStyle(fontSize: 12),
                   ),
                 ],
@@ -103,7 +103,7 @@ class BottomNav extends StatelessWidget {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => SavedProductsPage(),
+                          builder: (context) => OrderHistoryPage(),
                         ),
                       );
                     },

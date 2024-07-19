@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:kick_off_kits/utils/colors.dart';
+
 
 class SearchText extends StatelessWidget {
   final String hint;
@@ -15,7 +15,7 @@ class SearchText extends StatelessWidget {
   Widget build(BuildContext context) {
     final mediaQuery = MediaQuery.of(context);
     final screenWidth = mediaQuery.size.width;
-    final screenHeight = mediaQuery.size.height;
+
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 25),
       child: SizedBox(

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:kick_off_kits/components/kits_product.dart';
 import 'package:kick_off_kits/controller/controller.dart';
+import 'package:kick_off_kits/majorcomponent/new_arrival.dart';
 import 'package:provider/provider.dart';
 
 class NewListScreen extends StatelessWidget {
@@ -18,11 +19,11 @@ class NewListScreen extends StatelessWidget {
         future: context.read<ProductModel>().productsService.fetchProducts(),
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
-            return Center(child: CircularProgressIndicator());
+            return Center(child: Text("..."));
           } else if (snapshot.hasError) {
             return Center(child: Text('Error: ${snapshot.error}'));
           } else if (!snapshot.hasData || snapshot.data!.isEmpty) {
-            return Center(child: Text('No products available.'));
+            return Center(child: Text('No internet available.'));
           } else {
             List<dynamic> newArrivalProducts = snapshot.data!
                 .where((product) =>
@@ -65,21 +66,31 @@ class NewListScreen extends StatelessWidget {
                     child: SizedBox(
                       width: screenWidth / 2,
                       height: screenHeight / 3,
-                      child: KitsProduct(
-                        product_image: imageUrl.isNotEmpty
-                            ? NetworkImage(imageUrl) as ImageProvider<Object>
-                            : AssetImage('assets/images/no.jpg')
-                                as ImageProvider<Object>,
-                        price_rating: Text(
-                          price,
-                          style: TextStyle(
-                              fontSize: 16,
-                              fontWeight: FontWeight.normal,
-                              color: Colors.green),
+                      child: GestureDetector(
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => NewArrivalPage(),
+                            ),
+                          );
+                        },
+                        child: KitsProduct(
+                          product_image: imageUrl.isNotEmpty
+                              ? NetworkImage(imageUrl) as ImageProvider<Object>
+                              : AssetImage('assets/images/no.jpg')
+                                  as ImageProvider<Object>,
+                          price_rating: Text(
+                            price,
+                            style: TextStyle(
+                                fontSize: 16,
+                                fontWeight: FontWeight.normal,
+                                color: Colors.green),
+                          ),
+                          myText1: Text(product['name'] ?? 'No Name'),
+                          myText2: Text("Men Jersey"),
+                          action: Text(""),
                         ),
-                        myText1: Text(product['name'] ?? 'No Name'),
-                        myText2: Text("Men Jersey"),
-                        action: Text(""),
                       ),
                     ),
                   );

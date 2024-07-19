@@ -2,10 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:kick_off_kits/screens/order_history.dart';
 
 import 'package:provider/provider.dart';
-import 'package:shared_preferences/shared_preferences.dart';
-
 import '../controller/controller.dart';
-import 'home.dart';
 import 'kit_home.dart';
 
 class PaymentPage extends StatelessWidget {
@@ -41,27 +38,19 @@ class PaymentPage extends StatelessWidget {
                   style: TextStyle(fontSize: 24),
                 ),
                 SizedBox(height: 20),
-                SizedBox(height: 20),
                 Container(
                   width: screenWidth / 1.5,
                   height: screenHeight / 12,
                   child: ElevatedButton(
                     style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.black,
+                      backgroundColor: Colors.green,
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(14),
                       ),
                     ),
                     onPressed: () async {
-                      SharedPreferences prefs =
-                          await SharedPreferences.getInstance();
-                      List<String> products =
-                          productModel.cartItems.map((product) {
-                        return product
-                            .toString(); // Convert product to a string representation
-                      }).toList();
-                      await prefs.setStringList('savedProducts', products);
 
+                      await productModel.saveCartItems(productModel.cartItems);
                       productModel.clearAllCart(context);
                       productModel.delCounter();
 
@@ -80,33 +69,7 @@ class PaymentPage extends StatelessWidget {
                     ),
                   ),
                 ),
-                SizedBox(height: 20),
-                Container(
-                  width: screenWidth / 1.5,
-                  height: screenHeight / 12,
-                  child: ElevatedButton(
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.black,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(14),
-                      ),
-                    ),
-                    onPressed: () async {
-                      Future.delayed(Duration(seconds: 1), () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => SavedProductsPage(),
-                          ),
-                        );
-                      });
-                    },
-                    child: Text(
-                      "Proceed",
-                      style: TextStyle(color: Colors.white, fontSize: 18),
-                    ),
-                  ),
-                ),
+
               ],
             ),
           ),

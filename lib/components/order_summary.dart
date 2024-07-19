@@ -25,23 +25,23 @@ class OrderSummary extends StatelessWidget {
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: const [
+              children:  [
                 Text("Items"),
-                Text("4"),
+                Text('${productModel.counter}'),
               ],
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: const [
+              children:  [
                 Text("Delivery"),
-                Text("5000"),
+                Text('FREE'),
               ],
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: const [
+              children:  [
                 Text("Service"),
-                Text("3500"),
+                Text('FREE'),
               ],
             ),
             SizedBox(
@@ -129,9 +129,9 @@ class OrderSummary extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Column(
-                  children: const [
+                  children:  [
                     Text("Subtotal"),
-                    Text("5850"),
+                    Text('${productModel.getTotalPrice()}'),
                   ],
                 ),
                 Column(

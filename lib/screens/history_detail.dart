@@ -4,10 +4,10 @@ import 'package:kick_off_kits/components/kits_product.dart';
 import 'package:kick_off_kits/controller/controller.dart';
 import 'package:provider/provider.dart';
 
-class DetailPage extends StatelessWidget {
+class HistoryDetailPage extends StatelessWidget {
   final String itemId;
 
-  const DetailPage({
+  const HistoryDetailPage({
     super.key,
     required this.itemId,
   });
@@ -27,7 +27,7 @@ class DetailPage extends StatelessWidget {
           } else if (snapshot.hasError) {
             return Center(child: Text('Error: ${snapshot.error}'));
           } else if (!snapshot.hasData) {
-            return Center(child: Text('No product available.'));
+            return Center(child: Text('No history .'));
           } else {
             final product = snapshot.data!;
 
@@ -49,7 +49,7 @@ class DetailPage extends StatelessWidget {
 
             return Scaffold(
               appBar: AppBar(
-                title: const Text("Product Details"),
+                title: const Text("product His. Details"),
                 leading: IconButton(
                   icon: Icon(Icons.arrow_back),
                   onPressed: () {
@@ -69,9 +69,9 @@ class DetailPage extends StatelessWidget {
                           KitsProduct(
                             product_image: imageUrl.isNotEmpty
                                 ? NetworkImage(imageUrl)
-                                    as ImageProvider<Object>
+                            as ImageProvider<Object>
                                 : AssetImage('assets/images/no.jpg')
-                                    as ImageProvider<Object>,
+                            as ImageProvider<Object>,
                             price_rating: Text(
                               price,
                               style: TextStyle(
@@ -83,30 +83,7 @@ class DetailPage extends StatelessWidget {
                             myText2: Text("Men Jersey"),
                             action: Text(""),
                           ),
-                          Container(
-                            width: screenWidth,
-                            height: screenHeight / 14,
-                            child: TextButton(
-                              onPressed: () {
-                                productModel.addToCart(product, context);
-                                productModel.increment();
-                              },
-                              style: TextButton.styleFrom(
-                                backgroundColor: Colors.green,
-                                shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.zero,
-                                ),
-                              ),
-                              child: Text(
-                                "Add to Cart",
-                                style: TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 16,
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              ),
-                            ),
-                          ),
+
                         ],
                       ),
                     ),

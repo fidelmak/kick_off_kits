@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:kick_off_kits/controller/controller.dart';
 import 'package:provider/provider.dart';
 
-class KitsProduct extends StatelessWidget {
+class KitsProduct extends StatefulWidget {
   final ImageProvider product_image;
 
   final Widget price_rating;
@@ -20,6 +20,12 @@ class KitsProduct extends StatelessWidget {
   });
 
   @override
+  State<KitsProduct> createState() => _KitsProductState();
+}
+
+class _KitsProductState extends State<KitsProduct> {
+  bool _isFavorite = false;
+  @override
   Widget build(BuildContext context) {
     final mediaQuery = MediaQuery.of(context);
     final screenWidth = mediaQuery.size.width;
@@ -32,7 +38,7 @@ class KitsProduct extends StatelessWidget {
               height: screenHeight / 4.0,
               decoration: BoxDecoration(
                 image: DecorationImage(
-                  image: product_image,
+                  image: widget.product_image,
                   fit: BoxFit.fill,
                 ),
               ),
@@ -55,11 +61,16 @@ class KitsProduct extends StatelessWidget {
                             ),
                             child: IconButton(
                               icon: Icon(
-                                Icons.favorite_outline_outlined,
-                                color: Colors.black,
+                                _isFavorite ? Icons.favorite : Icons.favorite_outline_outlined,
+                                color: _isFavorite ? Colors.red : Colors.black,
                                 size: 16,
                               ),
-                              onPressed: () {},
+                              onPressed: () {
+                                setState(() {
+                                 _isFavorite = !_isFavorite; // Toggle the favorite status
+                                    });
+
+                              },
                             ),
                           ),
                           SizedBox(width: 20), // Space between the buttons
@@ -79,7 +90,7 @@ class KitsProduct extends StatelessWidget {
                                 size: 16,
                               ),
                               onPressed: () {
-                                
+
                               },
                               color:
                                   Colors.green, // Background color when pressed
@@ -100,7 +111,7 @@ class KitsProduct extends StatelessWidget {
                   Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Container(child: price_rating),
+                        Container(child: widget.price_rating),
                         Container(
                           decoration: BoxDecoration(
                             shape: BoxShape.circle,
@@ -117,14 +128,14 @@ class KitsProduct extends StatelessWidget {
                   Container(
                     child: Row(children: [
                       Container(
-                        child: myText1,
+                        child: widget.myText1,
                       )
                     ]),
                   ),
                   Container(
                     child: Row(children: [
                       Container(
-                        child: myText2,
+                        child: widget.myText2,
                       )
                     ]),
                   ),
@@ -132,7 +143,7 @@ class KitsProduct extends StatelessWidget {
               ),
             ),
           ),
-          action
+          widget.action
         ],
       );
     });

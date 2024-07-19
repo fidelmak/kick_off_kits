@@ -28,6 +28,21 @@ class CheckoutPage extends StatelessWidget {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
+                Center(
+                  child: Container(
+                    height: screenHeight / 4,
+                    width: screenWidth / 1.2,
+                    child: Image.asset(
+                      "assets/images/mpay.jpg",
+                      fit: BoxFit.contain,
+                    ),
+                  ),
+                ),
+                SizedBox(height: 40),
+
+
+
+
                 Text(
                   'Price to Check-Out:\n NGN ${totalPrice.toStringAsFixed(2)}',
                   style: TextStyle(fontSize: 24),
@@ -38,7 +53,7 @@ class CheckoutPage extends StatelessWidget {
                   height: screenHeight / 12,
                   child: ElevatedButton(
                     style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.black,
+                      backgroundColor: Colors.green,
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(14),
                       ),

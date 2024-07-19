@@ -57,7 +57,7 @@ class NewArrival extends StatelessWidget {
             } else if (snapshot.hasError) {
               return Center(child: Text('Error: ${snapshot.error}'));
             } else if (!snapshot.hasData || snapshot.data!.isEmpty) {
-              return const Center(child: Text('No products available.'));
+              return const Center(child: Text('No internet available.'));
             } else {
               List<dynamic> newArrivalProducts = snapshot.data!
                   .where((product) =>
@@ -101,12 +101,12 @@ class NewArrival extends StatelessWidget {
                       product['photos'].isNotEmpty) {
                     imageUrl = productModel.img + product['photos'][0]['url'];
                   }
-
+String itemId = product["id"];
                   return Padding(
                     padding: const EdgeInsets.all(4.0),
                     child: GestureDetector(
                       onTap: () {
-                        productModel.addToCart(product, context);
+                        productModel.detailPage(context, itemId);
                       },
                       child: KitsProduct(
                         product_image: imageUrl.isNotEmpty

@@ -1,8 +1,13 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 
+
 import 'package:intl/intl.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import '../screens/checkout.dart';
 import '../screens/detail_page.dart';
+import '../screens/history_detail.dart';
 import '../screens/home.dart';
 
 import '../screens/payment.dart';
@@ -15,9 +20,11 @@ class ProductModel with ChangeNotifier {
   List<Map<String, dynamic>> _items = [];
   List<Map<String, dynamic>> _addedItems = [];
   List<Map<String, dynamic>> _cartItems = [];
+  List<Map<String, dynamic>> _cartHistory = [];
 
   List<Map<String, dynamic>> get items => _addedItems;
   List<Map<String, dynamic>> get cartItems => _cartItems;
+  List<Map<String, dynamic>> get cartHistory => _cartHistory;
 
   Service productsService = Service();
 
@@ -55,6 +62,17 @@ class ProductModel with ChangeNotifier {
   //   }
   // }
 
+  //
+
+
+  Future<void> saveCartItems(List cartItems) async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    List<String> encodedCartItems = cartItems.map((item) => jsonEncode(item)).toList();
+    await prefs.setStringList('cartItems', encodedCartItems);
+  }
+
+  //
+
   detailPage(context, itemId) {
     Navigator.push(
       context,
@@ -65,7 +83,22 @@ class ProductModel with ChangeNotifier {
       ),
     );
   }
+  //////////////
+  historyDetailPage(context, itemId) {
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => HistoryDetailPage(
+          itemId: itemId,
+        ),
+      ),
+    );
+  }
 
+
+
+
+  ////////
   removeFromCart(Map<String, dynamic> product, context) {
     _cartItems.remove(product);
     ScaffoldMessenger.of(context).showSnackBar(
@@ -80,8 +113,7 @@ class ProductModel with ChangeNotifier {
   double getTotalPrice() {
     double total = 0.0;
     for (var item in _cartItems) {
-      total +=
-          double.tryParse(item['current_price'][0]['NGN'][0].toString()) ?? 0.0;
+      total += double.tryParse(item['current_price'].toString()) ?? 0.0;
     }
     return total;
   }
@@ -98,6 +130,9 @@ class ProductModel with ChangeNotifier {
       ),
     );
   }
+
+  // order history function 
+ 
 
   //  clear all items in the cart
   clearAllCart(context) {
