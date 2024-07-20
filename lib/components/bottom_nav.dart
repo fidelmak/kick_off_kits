@@ -7,6 +7,7 @@ import '../screens/cart.dart';
 import '../controller/controller.dart';
 import '../screens/kit_home.dart';
 import '../screens/order_history.dart';
+import '../screens/wish_list_page.dart';
 
 // bottom nav bar
 class BottomNav extends StatelessWidget {
@@ -74,15 +75,12 @@ class BottomNav extends StatelessWidget {
                 children: [
                   IconButton(
                     onPressed: () {
-                      // Navigator.push(
-                      //   context,
-                      //   MaterialPageRoute(
-                      //     builder: (context) => CheckoutPage(
-                      //       totalPrice: productModel.getTotalPrice(),
-                      //       productItems: productModel.cartItems,
-                      //     ),
-                      //   ),
-                      // );
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => WishListPage(wishListItems: productModel.wishLists,)
+                        ),
+                      );
                     },
                     icon: Icon(Icons.favorite_outline),
                   ),

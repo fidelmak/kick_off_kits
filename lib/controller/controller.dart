@@ -20,11 +20,14 @@ class ProductModel with ChangeNotifier {
   List<Map<String, dynamic>> _items = [];
   List<Map<String, dynamic>> _addedItems = [];
   List<Map<String, dynamic>> _cartItems = [];
-  List<Map<String, dynamic>> _cartHistory = [];
+  // List<Map<String, dynamic>> _wishLists = [];
 
   List<Map<String, dynamic>> get items => _addedItems;
   List<Map<String, dynamic>> get cartItems => _cartItems;
-  List<Map<String, dynamic>> get cartHistory => _cartHistory;
+  // List<Map<String, dynamic> > get wishLists => _wishLists;
+  List<Map<String, dynamic>> _wishLists = [];
+  List<Map<String, dynamic>> get wishLists => _wishLists;
+
 
   Service productsService = Service();
 
@@ -41,28 +44,42 @@ class ProductModel with ChangeNotifier {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
           content: Text('${product['name']} added to  cart'),
-          duration: Duration(seconds: 2),
+          duration: Duration(seconds: 1),
         ),
       );
       notifyListeners();
     }
   }
 
-  // addToHistory(Map<String, dynamic> products, context) {
-  //   if (!_addedItems.contains(product)) {
-  //     _cartItems.add(products);
 
-  //     ScaffoldMessenger.of(context).showSnackBar(
-  //       SnackBar(
-  //         content: Text('${product['name']} added to  cart'),
-  //         duration: Duration(seconds: 2),
-  //       ),
-  //     );
-  //     notifyListeners();
-  //   }
-  // }
+  void addToWishList(Map<String, dynamic> product, BuildContext context) {
+    if (!_addedItems.contains(product)) {
+      _wishLists.add(product);
+      _addedItems.add(product); // Track added items
 
-  //
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text('${product['name']} added to wish lists'),
+          duration: Duration(seconds: 1),
+        ),
+      );
+      notifyListeners();
+    }
+  }
+
+  void removeFromWishList(Map<String, dynamic> product, BuildContext context) {
+    _wishLists.remove(product);
+    _addedItems.remove(product); // Remove from tracking
+
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        content: Text('${product['name']} removed from wish lists'),
+        duration: Duration(seconds: 1),
+      ),
+    );
+    notifyListeners();
+  }
+
 
 
   Future<void> saveCartItems(List cartItems) async {
@@ -109,6 +126,26 @@ class ProductModel with ChangeNotifier {
     );
     notifyListeners();
   }
+  ///////
+
+
+  // removeFromWishList(Map<String, dynamic> product, context) {
+  //   _wishLists.remove(product);
+  //   ScaffoldMessenger.of(context).showSnackBar(
+  //     SnackBar(
+  //       content: Text('${product['name']} removed from cart'),
+  //       duration: Duration(seconds: 2),
+  //     ),
+  //   );
+  //   notifyListeners();
+  // }
+
+
+
+
+
+
+  ///////
 
   double getTotalPrice() {
     double total = 0.0;

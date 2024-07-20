@@ -31,6 +31,7 @@ class DetailPage extends StatelessWidget {
           } else {
             final product = snapshot.data!;
 
+
             final priceList = product['current_price'];
             String price = 'Price not available';
 
@@ -81,7 +82,7 @@ class DetailPage extends StatelessWidget {
                             ),
                             myText1: Text(product['name'] ?? 'No Name'),
                             myText2: Text("Men Jersey"),
-                            action: Text(""),
+                            action: Center(child: Text(product['description'] ?? 'No description ', style:TextStyle(fontSize:24))),
                           ),
                           Container(
                             width: screenWidth,

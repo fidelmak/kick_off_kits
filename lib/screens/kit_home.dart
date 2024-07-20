@@ -53,25 +53,7 @@ class _KitHomeState extends State<KitHome> {
                           obscure: false,
                         ),
                       ),
-                      Row(
-                        children: [
-                          Padding(
-                            padding: EdgeInsets.all(0.0),
-                            child: IconButton(
-                              icon: Icon(Icons.shopping_cart,
-                                  size: 24, color: Colors.black),
-                              onPressed: () {},
-                            ),
-                          ),
-                          Text(
-                            '${productModel.counter}',
-                            style: TextStyle(fontSize: 14, color: primaryRed),
-                          ),
-                          SizedBox(
-                            width: 2,
-                          )
-                        ],
-                      ),
+
                     ],
                   ),
                 ),
