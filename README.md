@@ -50,16 +50,16 @@
 ![Cart Page](assets/images/cart.png)
 
 ### Search Item
-![Search Item](assets/images/search_item.png)
+![Search Item](assets/images/searchitem.png)
 
 ### Search Page Result
-![Search Page Result](assets/images/search_result.png)
+![Search Page Result](assets/images/searchresult.png)
 
 ### Order History Page
-![Order History Page](assets/images/order_history.png)
+![Order History Page](assets/images/orderhistory.png)
 
 ### Order History Detail Page
-![Order History Detail Page](assets/images/order_history_detail.png)
+![Order History Detail Page](assets/images/orderhistorydetail.png)
 
 ### Payment Page
 ![Payment Page](assets/images/payment.png)
