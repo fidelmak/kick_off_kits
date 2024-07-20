@@ -17,7 +17,7 @@ Welcome to **kick_off_kits** – Your ultimate mobile shopping solution! GadgetV
 - **MVC Architecture**: Seamless integration of the MVC (Model-View-Controller) architecture for clean and maintainable code.
 
 ## Installation
-- **Download the app**: Available on [Google Drive](https://drive.google.com/file/d/1r6Zh4bn5dBUtDDG8YUF5274Ktr8f0K2e/view?usp=drive_link).
+- **Download the app**: Available on [Google Drive](https://drive.google.com/file/d/1HO4HHGvQvCWLgfmb6mWT0Ng6me9zWEWM/view?usp=drive_link).
 
 ## Usage
 
@@ -33,7 +33,7 @@ Welcome to **kick_off_kits** – Your ultimate mobile shopping solution! GadgetV
 ## View on Appetize
 **Appetize**
 
-*Interact with the website using this link:* [Appetize](https://appetize.io/app/b_m4g4xl5v2uhrvfsamgkz7gmgs4)
+*Interact with the website using this link:* [Appetize](https://appetize.io/app/b_zh6lm7cmyk5qehpduwscxa3hfm)
 
 ## Screenshots
 ## HomePage
@@ -55,6 +55,27 @@ Welcome to **kick_off_kits** – Your ultimate mobile shopping solution! GadgetV
 <br />
 <br />
 <br />
+
+
+## Search Page
+<img src="assets/images/cart.png" alt="Example Image" width="500" height="1000"/>
+<br />
+<br />
+<br />
+<br />
+<br />
+
+
+## Order History Page
+<img src="assets/images/cart.png" alt="Example Image" width="500" height="1000"/>
+<br />
+<br />
+<br />
+<br />
+<br />
+
+
+
 
 ## Payment Page
 <img src="assets/images/payment.png" alt="Example Image" width="500" height="1000"/> 
