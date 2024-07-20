@@ -11,9 +11,13 @@
 - [View on Appetize](#view-on-appetize)
 - [Screenshots](#screenshots)
   - [Home Page](#home-page)
+  - [All Products](#all-products)
+  - [Category of Top Sellers](#category-of-top-sellers)
+  - [Category of New Sellers](#category-of-new-sellers)
   - [Cart Page](#cart-page)
   - [Search Item](#search-item)
   - [Search Page Result](#search-page-result)
+  - [Checkout Page](#checkout-page)
   - [Order History Page](#order-history-page)
   - [Order History Detail Page](#order-history-detail-page)
   - [Payment Page](#payment-page)
@@ -44,22 +48,67 @@
 ## Screenshots
 
 ### Home Page
-![Home Page](assets/images/Home.png)
+<center>
+    <img src="assets/images/Home.png" alt="Home Page" width="300" height="600">
+</center>
+<br />
+
+### All Products
+<center>
+    <img src="assets/images/all.png" alt="All Products" width="300" height="600">
+</center>
+<br />
+
+### Category of Top Sellers
+<center>
+    <img src="assets/images/cat1.png" alt="Category of Top Sellers" width="300" height="600">
+</center>
+<br />
+
+### Category of New Sellers
+<center>
+    <img src="assets/images/cat2.png" alt="Category of New Sellers" width="300" height="600">
+</center>
+<br />
 
 ### Cart Page
-![Cart Page](assets/images/cart.png)
+<center>
+    <img src="assets/images/cart.png" alt="Cart Page" width="300" height="600">
+</center>
+<br />
 
 ### Search Item
-![Search Item](assets/images/searchitem.png)
+<center>
+    <img src="assets/images/search.png" alt="Search Item" width="300" height="600">
+</center>
+<br />
 
 ### Search Page Result
-![Search Page Result](assets/images/searchresult.png)
+<center>
+    <img src="assets/images/searchresult.png" alt="Search Page Result" width="300" height="600">
+</center>
+<br />
+
+### Checkout Page
+<center>
+    <img src="assets/images/checkout.png" alt="Checkout Page" width="300" height="600">
+</center>
+<br />
 
 ### Order History Page
-![Order History Page](assets/images/orderhistory.png)
+<center>
+    <img src="assets/images/orderhistory.png" alt="Order History Page" width="300" height="600">
+</center>
+<br />
 
 ### Order History Detail Page
-![Order History Detail Page](assets/images/orderhistorydetail.png)
+<center>
+    <img src="assets/images/orderhistorydetails.png" alt="Order History Detail Page" width="300" height="600">
+</center>
+<br />
 
 ### Payment Page
-![Payment Page](assets/images/payment.png)
+<center>
+    <img src="assets/images/payment.png" alt="Payment Page" width="300" height="600">
+</center>
+<br />
