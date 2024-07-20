@@ -1,6 +1,6 @@
 # kick_off_kits Mobile App
+**Kick Off Kits** is a dedicated shopping app for jersey enthusiasts, offering a wide range of jerseys from various clubs and countries. With a user-friendly interface and seamless navigation, users can easily browse, search, and purchase their favorite team jerseys. The app provides detailed product descriptions, high-quality images, and convenient features such as a wishlist and secure checkout, making it the ultimate destination for jersey shopping.
 
-Welcome to **kick_off_kits** – Your ultimate mobile shopping solution! GadgetVerse allows users to effortlessly browse, buy gadgets, and place orders using the mobile app.
 
 ## Table of Contents
 - [Features](#features)
@@ -33,7 +33,7 @@ Welcome to **kick_off_kits** – Your ultimate mobile shopping solution! GadgetV
 ## View on Appetize
 **Appetize**
 
-*Interact with the website using this link:* [Appetize](https://appetize.io/app/b_zh6lm7cmyk5qehpduwscxa3hfm)
+*Interact with the website using this link:* [Appetize](https://appetize.io/app/b_rdjora33gnqunb57r55cnsxhhy)
 
 ## Screenshots
 ## HomePage
@@ -57,7 +57,14 @@ Welcome to **kick_off_kits** – Your ultimate mobile shopping solution! GadgetV
 <br />
 
 
-## Search Page
+## Search item
+<img src="assets/images/cart.png" alt="Example Image" width="500" height="1000"/>
+<br />
+<br />
+<br />
+<br />
+<br />
+## Search Page result
 <img src="assets/images/cart.png" alt="Example Image" width="500" height="1000"/>
 <br />
 <br />
@@ -73,11 +80,26 @@ Welcome to **kick_off_kits** – Your ultimate mobile shopping solution! GadgetV
 <br />
 <br />
 <br />
+## Order History detail Page
+<img src="assets/images/cart.png" alt="Example Image" width="500" height="1000"/>
+<br />
+<br />
+<br />
+<br />
+<br />
+
 
 
 
 
 ## Payment Page
 <img src="assets/images/payment.png" alt="Example Image" width="500" height="1000"/> 
+
+<br />
+<br />
+<br />
+<br />
+<br />
+
 
 
