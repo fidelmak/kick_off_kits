@@ -49,7 +49,7 @@
 
 ### Home Page
 <center>
-    <img src="assets/images/Home.png" alt="Home Page" width="300" height="600">
+    <img src="assets/images/newhome.png" alt="Home Page" width="300" height="600">
 </center>
 <br />
 
@@ -83,6 +83,12 @@
 </center>
 <br />
 
+### Wish list
+<center>
+    <img src="assets/images/wishlist.png" alt="Order History Page" width="300" height="600">
+</center>
+<br />
+
 ### Search Page Result
 <center>
     <img src="assets/images/searchresult.png" alt="Search Page Result" width="300" height="600">
@@ -91,9 +97,10 @@
 
 ### Checkout Page
 <center>
-    <img src="assets/images/checkout.png" alt="Checkout Page" width="300" height="600">
+    <img src="assets/images/newcheckout.png" alt="Checkout Page" width="300" height="600">
 </center>
 <br />
+
 
 ### Order History Page
 <center>
