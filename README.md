@@ -79,7 +79,7 @@
 
 ### Search Item
 <center>
-    <img src="assets/images/search.png" alt="Search Item" width="300" height="600">
+    <img src="assets/images/newsearch.png" alt="Search Item" width="300" height="600">
 </center>
 <br />
 
