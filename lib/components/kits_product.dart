@@ -2,28 +2,25 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:kick_off_kits/controller/controller.dart';
 
-class KitsProduct extends StatefulWidget {
+class KitsProduct extends StatelessWidget {
   final ImageProvider product_image;
   final Widget price_rating;
   final Widget action;
   final Widget myText2;
   final Widget myText1;
+  final Widget myFav;
 
-  const KitsProduct({
+   KitsProduct({
     super.key,
     required this.product_image,
+    required this.myFav,
     required this.action,
     required this.price_rating,
     required this.myText2,
     required this.myText1,
   });
 
-  @override
-  State<KitsProduct> createState() => _KitsProductState();
-}
 
-class _KitsProductState extends State<KitsProduct> {
-  bool _isFavorite = false;
 
   @override
   Widget build(BuildContext context) {
@@ -39,7 +36,7 @@ class _KitsProductState extends State<KitsProduct> {
             height: screenHeight / 4.0,
             decoration: BoxDecoration(
               image: DecorationImage(
-                image: widget.product_image,
+                image: product_image,
                 fit: BoxFit.fill,
               ),
             ),
@@ -52,6 +49,7 @@ class _KitsProductState extends State<KitsProduct> {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
+
                       Container(
                         width: 30,
                         height: 30,
@@ -59,22 +57,7 @@ class _KitsProductState extends State<KitsProduct> {
                           shape: BoxShape.rectangle,
                           color: Colors.white,
                         ),
-                        child: IconButton(
-                          icon: Icon(
-                            _isFavorite
-                                ? Icons.favorite
-                                : Icons.favorite_outline_outlined,
-                            color: _isFavorite ? Colors.red : Colors.black,
-                            size: 16,
-                          ),
-                          onPressed: () {
-                            setState(() {
-                              // productModel.addToWishList(product, context);
-                              _isFavorite =
-                                  !_isFavorite; // Toggle the favorite status
-                            });
-                          },
-                        ),
+                        child: myFav
                       ),
                       SizedBox(width: 20),
                       Container(
@@ -111,7 +94,7 @@ class _KitsProductState extends State<KitsProduct> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Container(child: widget.price_rating),
+                      Container(child: price_rating),
                       Container(
                         decoration: BoxDecoration(
                           shape: BoxShape.circle,
@@ -129,14 +112,14 @@ class _KitsProductState extends State<KitsProduct> {
                   Row(
                     children: [
                       Container(
-                        child: widget.myText1,
+                        child: myText1,
                       ),
                     ],
                   ),
                   Row(
                     children: [
                       Container(
-                        child: widget.myText2,
+                        child: myText2,
                       ),
                     ],
                   ),
@@ -144,7 +127,7 @@ class _KitsProductState extends State<KitsProduct> {
               ),
             ),
           ),
-          widget.action,
+          action,
         ],
       );
     });

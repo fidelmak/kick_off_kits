@@ -5,9 +5,16 @@ import 'package:kick_off_kits/controller/controller.dart';
 import 'package:kick_off_kits/majorcomponent/new_arrival.dart';
 import 'package:provider/provider.dart';
 
-class NewListScreen extends StatelessWidget {
+class NewListScreen extends StatefulWidget {
   const NewListScreen({super.key});
 
+
+  @override
+  State<NewListScreen> createState() => _NewListScreenState();
+}
+
+class _NewListScreenState extends State<NewListScreen> {
+  bool _isFavorite = false;
   @override
   Widget build(BuildContext context) {
     final mediaQuery = MediaQuery.of(context);
@@ -89,7 +96,22 @@ class NewListScreen extends StatelessWidget {
                           ),
                           myText1: Text(product['name'] ?? 'No Name'),
                           myText2: Text("Men Jersey"),
-                          action: Text(""),
+                          action: Text(""), myFav: IconButton(
+                          icon: Icon(
+                            _isFavorite
+                                ? Icons.favorite
+                                : Icons.favorite_outline_outlined,
+                            color: _isFavorite ? Colors.red : Colors.black,
+                            size: 16,
+                          ),
+                          onPressed: () {
+                            // setState(() {
+                            //   // productModel.addToWishList(product, context);
+                            //   // _isFavorite =
+                            //   // !_isFavorite; // Toggle the favorite status
+                            // });
+                          },
+                        ),
                         ),
                       ),
                     ),

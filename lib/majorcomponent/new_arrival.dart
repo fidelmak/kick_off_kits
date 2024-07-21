@@ -8,9 +8,15 @@ import '../controller/controller.dart';
 import '../service/service.dart';
 import '../utils/colors.dart';
 
-class NewArrivalPage extends StatelessWidget {
+class NewArrivalPage extends StatefulWidget {
   const NewArrivalPage({super.key});
 
+  @override
+  State<NewArrivalPage> createState() => _NewArrivalPageState();
+}
+
+class _NewArrivalPageState extends State<NewArrivalPage> {
+  bool _isFavorite = false;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -42,9 +48,16 @@ class NewArrivalPage extends StatelessWidget {
   }
 }
 
-class NewArrival extends StatelessWidget {
+class NewArrival extends StatefulWidget {
   NewArrival({super.key});
+
+  @override
+  State<NewArrival> createState() => _NewArrivalState();
+}
+
+class _NewArrivalState extends State<NewArrival> {
   final PageStorageBucket bucket = PageStorageBucket();
+  bool _isFavorite = false;
 
   @override
   Widget build(BuildContext context) {
@@ -126,7 +139,18 @@ class NewArrival extends StatelessWidget {
                         ),
                         myText1: Text(product['name'] ?? 'No Name'),
                         myText2: const Text("Men Jersey"),
-                        action: const SizedBox(height: 1),
+                        action: const SizedBox(height: 1), myFav:IconButton(
+                        icon: Icon(
+                          _isFavorite
+                              ? Icons.favorite
+                              : Icons.favorite_outline_outlined,
+                          color: _isFavorite ? Colors.red : Colors.black,
+                          size: 16,
+                        ),
+                        onPressed: () {
+
+                        },
+                      ),
                       ),
                     ),
                   );

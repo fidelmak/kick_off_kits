@@ -5,9 +5,15 @@ import 'package:kick_off_kits/controller/controller.dart';
 import 'package:kick_off_kits/majorcomponent/top_sellers.dart';
 import 'package:provider/provider.dart';
 
-class TopSellerScreen extends StatelessWidget {
+class TopSellerScreen extends StatefulWidget {
   const TopSellerScreen({super.key});
 
+  @override
+  State<TopSellerScreen> createState() => _TopSellerScreenState();
+}
+
+class _TopSellerScreenState extends State<TopSellerScreen> {
+  bool _isFavorite = false;
   @override
   Widget build(BuildContext context) {
     final mediaQuery = MediaQuery.of(context);
@@ -88,7 +94,22 @@ class TopSellerScreen extends StatelessWidget {
                           ),
                           myText1: Text(product['name'] ?? 'No Name'),
                           myText2: Text("Men Jersey"),
-                          action: Text(""),
+                          action: Text(""), myFav:IconButton(
+                          icon: Icon(
+                            _isFavorite
+                                ? Icons.favorite
+                                : Icons.favorite_outline_outlined,
+                            color: _isFavorite ? Colors.red : Colors.black,
+                            size: 16,
+                          ),
+                          onPressed: () {
+                            // setState(() {
+                            //   //  productModel.addToWishList(product, context);
+                            //   // _isFavorite =
+                            //   // !_isFavorite; // Toggle the favorite status
+                            // });
+                          },
+                        ),
                         ),
                       ),
                     ),

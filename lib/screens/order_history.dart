@@ -42,7 +42,7 @@ class _SavedProductsPageState extends State<OrderHistoryPage> {
         body: savedProducts.isEmpty
             ? Center(
           child: Text(
-            'No saved products.',
+            'No History.',
             style: TextStyle(fontSize: 18, color: Colors.grey),
           ),
         )

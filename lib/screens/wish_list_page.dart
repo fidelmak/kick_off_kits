@@ -40,11 +40,11 @@ class WishListPage extends StatelessWidget {
                       final priceList = product['current_price'];
                       String price = 'Price not available';
 
-                      if (priceList != null && priceList.isNotEmpty) {
-                        final ngnPrices = priceList[0]['NGN'];
-                        if (ngnPrices != null && ngnPrices.isNotEmpty) {
+                      if (priceList != null) {
+                        final ngnPrices = priceList;
+                        if (ngnPrices != null) {
                           final formatter = NumberFormat('#,##0');
-                          price = '₦ ${formatter.format(ngnPrices[0])}';
+                          price = '₦ ${formatter.format(ngnPrices)}';
                         }
                       }
 

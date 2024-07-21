@@ -5,11 +5,17 @@ import 'package:provider/provider.dart';
 import '../components/kits_product.dart';
 import '../controller/controller.dart';
 
-class SearchFieldPage extends StatelessWidget {
+class SearchFieldPage extends StatefulWidget {
   final List<dynamic> products;
 
   const SearchFieldPage({Key? key, required this.products}) : super(key: key);
 
+  @override
+  State<SearchFieldPage> createState() => _SearchFieldPageState();
+}
+
+class _SearchFieldPageState extends State<SearchFieldPage> {
+  bool _isFavorite = false;
   @override
   Widget build(BuildContext context) {
     return Consumer<ProductModel>(
@@ -18,7 +24,7 @@ class SearchFieldPage extends StatelessWidget {
           appBar: AppBar(
             title: const Text('Search Details'),
           ),
-          body: products.isEmpty
+          body: widget.products.isEmpty
               ? const Center(
             child: Text(
               'No products found.',
@@ -26,9 +32,9 @@ class SearchFieldPage extends StatelessWidget {
             ),
           )
               : ListView.builder(
-            itemCount: products.length,
+            itemCount: widget.products.length,
             itemBuilder: (context, index) {
-              var product = products[index];
+              var product = widget.products[index];
 
               final priceList = product['current_price'];
               String price = 'Price not available';
@@ -68,7 +74,22 @@ class SearchFieldPage extends StatelessWidget {
                     ),
                     myText1: Text(product['name'] ?? 'No Name'),
                     myText2: const Text("Men Jersey"),
-                    action: const SizedBox(height: 1),
+                    action: const SizedBox(height: 1), myFav: IconButton(
+                    icon: Icon(
+                      _isFavorite
+                          ? Icons.favorite
+                          : Icons.favorite_outline_outlined,
+                      color: _isFavorite ? Colors.red : Colors.black,
+                      size: 16,
+                    ),
+                    onPressed: () {
+                      // setState(() {
+                      //   // productModel.addToWishList(product, context);
+                      //   _isFavorite =
+                      //   !_isFavorite; // Toggle the favorite status
+                      // });
+                    },
+                  ),
                   ),
                 ),
               );

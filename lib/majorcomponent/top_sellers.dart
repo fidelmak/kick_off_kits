@@ -8,8 +8,14 @@ import '../controller/controller.dart';
 import '../service/service.dart';
 import '../utils/colors.dart';
 
-class TopSellerPage extends StatelessWidget {
+class TopSellerPage extends StatefulWidget {
   const TopSellerPage({super.key});
+
+  @override
+  State<TopSellerPage> createState() => _TopSellerPageState();
+}
+
+class _TopSellerPageState extends State<TopSellerPage> {
 
   @override
   Widget build(BuildContext context) {
@@ -42,9 +48,15 @@ class TopSellerPage extends StatelessWidget {
   }
 }
 
-class NewArrival extends StatelessWidget {
+class NewArrival extends StatefulWidget {
   const NewArrival({super.key});
 
+  @override
+  State<NewArrival> createState() => _NewArrivalState();
+}
+
+class _NewArrivalState extends State<NewArrival> {
+  bool _isFavorite = false;
   @override
   Widget build(BuildContext context) {
     return Consumer<ProductModel>(
@@ -123,7 +135,18 @@ String itemId = product["id"];
                         ),
                         myText1: Text(product['name'] ?? 'No Name'),
                         myText2: const Text("Men Jersey"),
-                        action: const SizedBox(height: 1),
+                        action: const SizedBox(height: 1), myFav: IconButton(
+                        icon: Icon(
+                          _isFavorite
+                              ? Icons.favorite
+                              : Icons.favorite_outline_outlined,
+                          color: _isFavorite ? Colors.red : Colors.black,
+                          size: 16,
+                        ),
+                        onPressed: () {
+
+                        },
+                      ),
                       ),
                     ),
                   );

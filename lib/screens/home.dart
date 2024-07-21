@@ -13,6 +13,7 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   // Create a PageStorageBucket
   final PageStorageBucket bucket = PageStorageBucket();
+  bool _isFavorite = false;
 
   @override
   Widget build(BuildContext context) {
@@ -92,7 +93,18 @@ class _HomeScreenState extends State<HomeScreen> {
                           myText2: Text("Men Jersey"),
                           action: SizedBox(
                             height: 1,
+                          ), myFav: IconButton(
+                          icon: Icon(
+                            _isFavorite
+                                ? Icons.favorite
+                                : Icons.favorite_outline_outlined,
+                            color: _isFavorite ? Colors.red : Colors.black,
+                            size: 16,
                           ),
+                          onPressed: () {
+
+                          },
+                        ),
                         ),
                       ),
                     );

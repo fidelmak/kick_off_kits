@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import 'package:kick_off_kits/controller/controller.dart';
 import 'package:provider/provider.dart';
@@ -20,7 +22,7 @@ class OrderSummary extends StatelessWidget {
             ),
             Row(
               children: [
-                const Text("ORDER SUMMARY"),
+                const Text("ORDER SUMMARY", style: TextStyle(fontSize:24, fontWeight: FontWeight.bold)),
               ],
             ),
             Row(
@@ -119,6 +121,9 @@ class OrderSummary extends StatelessWidget {
                       ),
                     ],
                   ),
+                  SizedBox(
+                    height: 12,
+                  ),
                 ],
               ),
             ),
@@ -131,7 +136,7 @@ class OrderSummary extends StatelessWidget {
                 Column(
                   children:  [
                     Text("Subtotal"),
-                    Text('${productModel.getTotalPrice()}'),
+                    Text(' ₦ ${productModel.getTotalPrice()}'),
                   ],
                 ),
                 Column(

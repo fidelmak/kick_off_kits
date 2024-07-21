@@ -37,12 +37,12 @@ class FirstScreen extends StatelessWidget {
                                 shadows: [
                                   Shadow(
                                     offset: Offset(2.0, 2.0),
-                                    blurRadius: 4.0,
+                                    blurRadius: 8.0,
                                     color: Colors.green,
                                   ),
                                 ],
                                 color: Colors.green,
-                                fontSize: 30,
+                                fontSize: 24,
                                 fontWeight: FontWeight.bold),
                           )),
                     ],

@@ -4,7 +4,7 @@ import 'package:kick_off_kits/components/kits_product.dart';
 import 'package:kick_off_kits/controller/controller.dart';
 import 'package:provider/provider.dart';
 
-class HistoryDetailPage extends StatelessWidget {
+class HistoryDetailPage extends StatefulWidget {
   final String itemId;
 
   const HistoryDetailPage({
@@ -13,6 +13,12 @@ class HistoryDetailPage extends StatelessWidget {
   });
 
   @override
+  State<HistoryDetailPage> createState() => _HistoryDetailPageState();
+}
+
+class _HistoryDetailPageState extends State<HistoryDetailPage> {
+  bool _isFavorite = false;
+  @override
   Widget build(BuildContext context) {
     final mediaQuery = MediaQuery.of(context);
     final screenHeight = mediaQuery.size.height;
@@ -20,7 +26,7 @@ class HistoryDetailPage extends StatelessWidget {
 
     return Consumer<ProductModel>(builder: (context, productModel, child) {
       return FutureBuilder<Map<String, dynamic>>(
-        future: productModel.productsService.fetchProduct(itemId),
+        future: productModel.productsService.fetchProduct(widget.itemId),
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
             return Center(child: CircularProgressIndicator());
@@ -81,7 +87,22 @@ class HistoryDetailPage extends StatelessWidget {
                             ),
                             myText1: Text(product['name'] ?? 'No Name'),
                             myText2: Text("Men Jersey"),
-                            action: Text(""),
+                            action: Text(""), myFav:IconButton(
+                            icon: Icon(
+                              _isFavorite
+                                  ? Icons.favorite
+                                  : Icons.favorite_outline_outlined,
+                              color: _isFavorite ? Colors.red : Colors.black,
+                              size: 16,
+                            ),
+                            onPressed: () {
+                              setState(() {
+                                // productModel.addToWishList(product, context);
+                                // _isFavorite =
+                                // !_isFavorite; // Toggle the favorite status
+                              });
+                            },
+                          ),
                           ),
 
                         ],

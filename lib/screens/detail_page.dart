@@ -4,7 +4,7 @@ import 'package:kick_off_kits/components/kits_product.dart';
 import 'package:kick_off_kits/controller/controller.dart';
 import 'package:provider/provider.dart';
 
-class DetailPage extends StatelessWidget {
+class DetailPage extends StatefulWidget {
   final String itemId;
 
   const DetailPage({
@@ -13,14 +13,21 @@ class DetailPage extends StatelessWidget {
   });
 
   @override
+  State<DetailPage> createState() => _DetailPageState();
+}
+
+class _DetailPageState extends State<DetailPage> {
+  bool _isFavorite = false;
+  @override
   Widget build(BuildContext context) {
     final mediaQuery = MediaQuery.of(context);
     final screenHeight = mediaQuery.size.height;
     final screenWidth = mediaQuery.size.width;
 
+
     return Consumer<ProductModel>(builder: (context, productModel, child) {
       return FutureBuilder<Map<String, dynamic>>(
-        future: productModel.productsService.fetchProduct(itemId),
+        future: productModel.productsService.fetchProduct(widget.itemId),
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
             return Center(child: CircularProgressIndicator());
@@ -80,9 +87,32 @@ class DetailPage extends StatelessWidget {
                                   fontWeight: FontWeight.normal,
                                   color: Colors.green),
                             ),
-                            myText1: Text(product['name'] ?? 'No Name'),
-                            myText2: Text("Men Jersey"),
-                            action: Center(child: Text(product['description'] ?? 'No description ', style:TextStyle(fontSize:24))),
+                            myText1: Text(product['name'] ?? 'No Name',style: TextStyle(
+                              color: Colors.black,
+                              fontSize: 16,
+                              fontWeight: FontWeight.bold,
+                            ),),
+                            myText2: Text("Men Jersey",style: TextStyle(
+                              color: Colors.black,
+                              fontSize: 16,
+                              fontWeight: FontWeight.bold,
+                            ),),
+                            action: Center(child: Text(product['description'] ?? 'No description ', style:TextStyle(fontSize:24))), myFav: IconButton(
+                            icon: Icon(
+                              _isFavorite
+                                  ? Icons.favorite
+                                  : Icons.favorite_outline_outlined,
+                              color: _isFavorite ? Colors.red : Colors.black,
+                              size: 16,
+                            ),
+                            onPressed: () {
+                              setState(() {
+                                 productModel.addToWishList(product, context);
+                                _isFavorite =
+                                !_isFavorite; // Toggle the favorite status
+                              });
+                            },
+                          ),
                           ),
                           Container(
                             width: screenWidth,
