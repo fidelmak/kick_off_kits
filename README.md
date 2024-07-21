@@ -29,7 +29,7 @@
 - **MVC Architecture**: Seamless integration of the MVC (Model-View-Controller) architecture for clean and maintainable code.
 
 ## Installation
-- **Download the app**: Available on [Google Drive](https://drive.google.com/file/d/1HO4HHGvQvCWLgfmb6mWT0Ng6me9zWEWM/view?usp=drive_link).
+- **Download the app**: Available on [Google Drive](https://drive.google.com/file/d/1akcCtDcYWL_bdC0V8tvTIF0if75gqcMR/view?usp=drive_link).
 
 ## Usage
 
@@ -43,7 +43,7 @@
 4. **Checkout**: Proceed to checkout by entering your shipping details and payment information.
 
 ## View on Appetize
-**Appetize**: Interact with the app using this link: [Appetize](https://appetize.io/app/b_rdjora33gnqunb57r55cnsxhhy)
+**Appetize**: Interact with the app using this link: [Appetize](https://appetize.io/app/b_434e4j7qqgdz7pybe4bbw2d63a)
 
 ## Screenshots
 
